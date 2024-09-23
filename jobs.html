@@ -34,162 +34,681 @@
 
     <link rel="stylesheet" href="./dashboard/css/style.css">
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+
+
+
+
+    <style type="text/css">
+        .apexcharts-canvas {
+            position: relative;
+            user-select: none;
+            /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
         }
 
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        /* scrollbar is not visible by default for legend, hence forcing the visibility */
+        .apexcharts-canvas ::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 6px;
+        }
+
+        .apexcharts-canvas ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, .5);
+            box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+            -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        }
+
+
+        .apexcharts-inner {
             position: relative;
         }
 
-        /* Position the Add Course button to the top right */
-        .right-section {
+        .apexcharts-text tspan {
+            font-family: inherit;
+        }
+
+        .legend-mouseover-inactive {
+            transition: 0.15s ease all;
+            opacity: 0.20;
+        }
+
+        .apexcharts-series-collapsed {
+            opacity: 0;
+        }
+
+        .apexcharts-tooltip {
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px -4px #999;
+            cursor: default;
+            font-size: 14px;
+            left: 62px;
+            opacity: 0;
+            pointer-events: none;
             position: absolute;
             top: 20px;
-            right: 20px;
-        }
-
-        .add-course-btn {
-            background-color: #f93a0b;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .course-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .course-card {
-            background-color: white;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            white-space: nowrap;
+            z-index: 12;
+            transition: 0.15s ease all;
         }
 
-        .course-card:hover {
-            transform: scale(1.05);
+        .apexcharts-tooltip.apexcharts-active {
+            opacity: 1;
+            transition: 0.15s ease all;
         }
 
-        .course-image img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+        .apexcharts-tooltip.apexcharts-theme-light {
+            border: 1px solid #e3e3e3;
+            background: rgba(255, 255, 255, 0.96);
         }
 
-        .course-content {
-            padding: 15px;
+        .apexcharts-tooltip.apexcharts-theme-dark {
+            color: #fff;
+            background: rgba(30, 30, 30, 0.8);
         }
 
-        .course-title {
-            color: #f93a0b;
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 10px;
+        .apexcharts-tooltip * {
+            font-family: inherit;
         }
 
-        .course-description {
-            color: #333;
-            font-size: 14px;
-            margin-bottom: 15px;
+
+        .apexcharts-tooltip-title {
+            padding: 6px;
+            font-size: 15px;
+            margin-bottom: 4px;
         }
 
-        .course-pricing {
-            color: #555;
-            margin-bottom: 10px;
+        .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+            background: #ECEFF1;
+            border-bottom: 1px solid #ddd;
         }
 
-        .course-rating {
-            font-size: 14px;
-            color: #666;
+        .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid #333;
         }
 
-        /* Modal Styles */
-        #courseModal {
+        .apexcharts-tooltip-text-value,
+        .apexcharts-tooltip-text-z-value {
+            display: inline-block;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .apexcharts-tooltip-text-z-label:empty,
+        .apexcharts-tooltip-text-z-value:empty {
             display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1000;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black with opacity */
-            justify-content: center;
-            /* Center horizontally */
+        }
+
+        .apexcharts-tooltip-text-value,
+        .apexcharts-tooltip-text-z-value {
+            font-weight: 600;
+        }
+
+        .apexcharts-tooltip-marker {
+            width: 12px;
+            height: 12px;
+            position: relative;
+            top: 0px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .apexcharts-tooltip-series-group {
+            padding: 0 10px;
+            display: none;
+            text-align: left;
+            justify-content: left;
             align-items: center;
-            /* Center vertically */
         }
 
-        /* Modal Content */
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
-            /* Adjust as needed */
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+            opacity: 1;
         }
 
-        /* Close Button */
-        #closeModalBtn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+        .apexcharts-tooltip-series-group.apexcharts-active,
+        .apexcharts-tooltip-series-group:last-child {
+            padding-bottom: 4px;
+        }
+
+        .apexcharts-tooltip-series-group-hidden {
+            opacity: 0;
+            height: 0;
+            line-height: 0;
+            padding: 0 !important;
+        }
+
+        .apexcharts-tooltip-y-group {
+            padding: 6px 0 5px;
+        }
+
+        .apexcharts-tooltip-box,
+        .apexcharts-custom-tooltip {
+            padding: 4px 8px;
+        }
+
+        .apexcharts-tooltip-boxPlot {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .apexcharts-tooltip-box>div {
+            margin: 4px 0;
+        }
+
+        .apexcharts-tooltip-box span.value {
             font-weight: bold;
         }
 
-        #closeModalBtn:hover,
-        #closeModalBtn:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .apexcharts-tooltip-rangebar {
+            padding: 5px 8px;
         }
 
+        .apexcharts-tooltip-rangebar .category {
+            font-weight: 600;
+            color: #777;
+        }
 
-        input,
-        textarea {
+        .apexcharts-tooltip-rangebar .series-name {
+            font-weight: bold;
             display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            margin-bottom: 5px;
         }
 
-        button {
-            background-color: #f93a0b;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+        .apexcharts-xaxistooltip {
+            opacity: 0;
+            padding: 9px 10px;
+            pointer-events: none;
+            color: #373d3f;
+            font-size: 13px;
+            text-align: center;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+            background: #ECEFF1;
+            border: 1px solid #90A4AE;
+            transition: 0.15s ease all;
+        }
+
+        .apexcharts-xaxistooltip.apexcharts-theme-dark {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .apexcharts-xaxistooltip:after,
+        .apexcharts-xaxistooltip:before {
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .apexcharts-xaxistooltip:after {
+            border-color: rgba(236, 239, 241, 0);
+            border-width: 6px;
+            margin-left: -6px;
+        }
+
+        .apexcharts-xaxistooltip:before {
+            border-color: rgba(144, 164, 174, 0);
+            border-width: 7px;
+            margin-left: -7px;
+        }
+
+        .apexcharts-xaxistooltip-bottom:after,
+        .apexcharts-xaxistooltip-bottom:before {
+            bottom: 100%;
+        }
+
+        .apexcharts-xaxistooltip-top:after,
+        .apexcharts-xaxistooltip-top:before {
+            top: 100%;
+        }
+
+        .apexcharts-xaxistooltip-bottom:after {
+            border-bottom-color: #ECEFF1;
+        }
+
+        .apexcharts-xaxistooltip-bottom:before {
+            border-bottom-color: #90A4AE;
+        }
+
+        .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+            border-bottom-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+            border-bottom-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-xaxistooltip-top:after {
+            border-top-color: #ECEFF1
+        }
+
+        .apexcharts-xaxistooltip-top:before {
+            border-top-color: #90A4AE;
+        }
+
+        .apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-xaxistooltip.apexcharts-active {
+            opacity: 1;
+            transition: 0.15s ease all;
+        }
+
+        .apexcharts-yaxistooltip {
+            opacity: 0;
+            padding: 4px 10px;
+            pointer-events: none;
+            color: #373d3f;
+            font-size: 13px;
+            text-align: center;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+            background: #ECEFF1;
+            border: 1px solid #90A4AE;
+        }
+
+        .apexcharts-yaxistooltip.apexcharts-theme-dark {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .apexcharts-yaxistooltip:after,
+        .apexcharts-yaxistooltip:before {
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .apexcharts-yaxistooltip:after {
+            border-color: rgba(236, 239, 241, 0);
+            border-width: 6px;
+            margin-top: -6px;
+        }
+
+        .apexcharts-yaxistooltip:before {
+            border-color: rgba(144, 164, 174, 0);
+            border-width: 7px;
+            margin-top: -7px;
+        }
+
+        .apexcharts-yaxistooltip-left:after,
+        .apexcharts-yaxistooltip-left:before {
+            left: 100%;
+        }
+
+        .apexcharts-yaxistooltip-right:after,
+        .apexcharts-yaxistooltip-right:before {
+            right: 100%;
+        }
+
+        .apexcharts-yaxistooltip-left:after {
+            border-left-color: #ECEFF1;
+        }
+
+        .apexcharts-yaxistooltip-left:before {
+            border-left-color: #90A4AE;
+        }
+
+        .apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+            border-left-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+            border-left-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-yaxistooltip-right:after {
+            border-right-color: #ECEFF1;
+        }
+
+        .apexcharts-yaxistooltip-right:before {
+            border-right-color: #90A4AE;
+        }
+
+        .apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+            border-right-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+            border-right-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .apexcharts-yaxistooltip.apexcharts-active {
+            opacity: 1;
+        }
+
+        .apexcharts-yaxistooltip-hidden {
+            display: none;
+        }
+
+        .apexcharts-xcrosshairs,
+        .apexcharts-ycrosshairs {
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.15s ease all;
+        }
+
+        .apexcharts-xcrosshairs.apexcharts-active,
+        .apexcharts-ycrosshairs.apexcharts-active {
+            opacity: 1;
+            transition: 0.15s ease all;
+        }
+
+        .apexcharts-ycrosshairs-hidden {
+            opacity: 0;
+        }
+
+        .apexcharts-selection-rect {
+            cursor: move;
+        }
+
+        .svg_select_boundingRect,
+        .svg_select_points_rot {
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .apexcharts-selection-rect+g .svg_select_boundingRect,
+        .apexcharts-selection-rect+g .svg_select_points_rot {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .apexcharts-selection-rect+g .svg_select_points_l,
+        .apexcharts-selection-rect+g .svg_select_points_r {
+            cursor: ew-resize;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .svg_select_points {
+            fill: #efefef;
+            stroke: #333;
+        }
+
+        .apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+            cursor: crosshair
+        }
+
+        .apexcharts-svg.apexcharts-zoomable.hovering-pan {
+            cursor: move
+        }
+
+        .apexcharts-zoom-icon,
+        .apexcharts-zoomin-icon,
+        .apexcharts-zoomout-icon,
+        .apexcharts-reset-icon,
+        .apexcharts-pan-icon,
+        .apexcharts-selection-icon,
+        .apexcharts-menu-icon,
+        .apexcharts-toolbar-custom-icon {
             cursor: pointer;
-            font-size: 16px;
+            width: 20px;
+            height: 20px;
+            line-height: 24px;
+            color: #6E8192;
+            text-align: center;
+        }
+
+        .apexcharts-zoom-icon svg,
+        .apexcharts-zoomin-icon svg,
+        .apexcharts-zoomout-icon svg,
+        .apexcharts-reset-icon svg,
+        .apexcharts-menu-icon svg {
+            fill: #6E8192;
+        }
+
+        .apexcharts-selection-icon svg {
+            fill: #444;
+            transform: scale(0.76)
+        }
+
+        .apexcharts-theme-dark .apexcharts-zoom-icon svg,
+        .apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+        .apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+        .apexcharts-theme-dark .apexcharts-reset-icon svg,
+        .apexcharts-theme-dark .apexcharts-pan-icon svg,
+        .apexcharts-theme-dark .apexcharts-selection-icon svg,
+        .apexcharts-theme-dark .apexcharts-menu-icon svg,
+        .apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+            fill: #f3f4f5;
+        }
+
+        .apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+        .apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+        .apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+            fill: #008FFB;
+        }
+
+        .apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+        .apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+        .apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+        .apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+            fill: #333;
+        }
+
+        .apexcharts-selection-icon,
+        .apexcharts-menu-icon {
+            position: relative;
+        }
+
+        .apexcharts-reset-icon {
+            margin-left: 5px;
+        }
+
+        .apexcharts-zoom-icon,
+        .apexcharts-reset-icon,
+        .apexcharts-menu-icon {
+            transform: scale(0.85);
+        }
+
+        .apexcharts-zoomin-icon,
+        .apexcharts-zoomout-icon {
+            transform: scale(0.7)
+        }
+
+        .apexcharts-zoomout-icon {
+            margin-right: 3px;
+        }
+
+        .apexcharts-pan-icon {
+            transform: scale(0.62);
+            position: relative;
+            left: 1px;
+            top: 0px;
+        }
+
+        .apexcharts-pan-icon svg {
+            fill: #fff;
+            stroke: #6E8192;
+            stroke-width: 2;
+        }
+
+        .apexcharts-pan-icon.apexcharts-selected svg {
+            stroke: #008FFB;
+        }
+
+        .apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+            stroke: #333;
+        }
+
+        .apexcharts-toolbar {
+            position: absolute;
+            z-index: 11;
+            max-width: 176px;
+            text-align: right;
+            border-radius: 3px;
+            padding: 0px 6px 2px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .apexcharts-menu {
+            background: #fff;
+            position: absolute;
+            top: 100%;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 3px;
+            right: 10px;
+            opacity: 0;
+            min-width: 110px;
+            transition: 0.15s ease all;
+            pointer-events: none;
+        }
+
+        .apexcharts-menu.apexcharts-menu-open {
+            opacity: 1;
+            pointer-events: all;
+            transition: 0.15s ease all;
+        }
+
+        .apexcharts-menu-item {
+            padding: 6px 7px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .apexcharts-theme-light .apexcharts-menu-item:hover {
+            background: #eee;
+        }
+
+        .apexcharts-theme-dark .apexcharts-menu {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        @media screen and (min-width: 768px) {
+            .apexcharts-canvas:hover .apexcharts-toolbar {
+                opacity: 1;
+            }
+        }
+
+        .apexcharts-datalabel.apexcharts-element-hidden {
+            opacity: 0;
+        }
+
+        .apexcharts-pie-label,
+        .apexcharts-datalabels,
+        .apexcharts-datalabel,
+        .apexcharts-datalabel-label,
+        .apexcharts-datalabel-value {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .apexcharts-pie-label-delay {
+            opacity: 0;
+            animation-name: opaque;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease;
+        }
+
+        .apexcharts-canvas .apexcharts-element-hidden {
+            opacity: 0;
+        }
+
+        .apexcharts-hide .apexcharts-series-points {
+            opacity: 0;
+        }
+
+        .apexcharts-gridline,
+        .apexcharts-annotation-rect,
+        .apexcharts-tooltip .apexcharts-marker,
+        .apexcharts-area-series .apexcharts-area,
+        .apexcharts-line,
+        .apexcharts-zoom-rect,
+        .apexcharts-toolbar svg,
+        .apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+        .apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+        .apexcharts-radar-series path,
+        .apexcharts-radar-series polygon {
+            pointer-events: none;
+        }
+
+
+        /* markers */
+
+        .apexcharts-marker {
+            transition: 0.15s ease all;
+        }
+
+        @keyframes opaque {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        /* Resize generated styles */
+
+        @keyframes resizeanim {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        .resize-triggers {
+            animation: 1ms resizeanim;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .resize-triggers,
+        .resize-triggers>div,
+        .contract-trigger:before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .resize-triggers>div {
+            background: #eee;
+            overflow: auto;
+        }
+
+        .contract-trigger:before {
+            width: 200%;
+            height: 200%;
         }
     </style>
 </head>
@@ -881,7 +1400,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Course
+                                Job List
                             </div>
                             <div class="nav-item d-flex align-items-center">
                                 <form action="dashboard.index">
@@ -891,7 +1410,7 @@
                                                     class="flaticon-381-search-2"></i></button></span>
                                     </div>
                                 </form>
-                                
+                               
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -1321,7 +1840,7 @@
 
                     </li>
                     <li>
-                        <a class="" href="" aria-expanded="false">
+                        <a class="" href="course.html" aria-expanded="false">
                             <i class="fas fa-book"></i> <!-- Course icon -->
                             <span class="nav-text">Course</span>
                         </a>
@@ -1345,116 +1864,279 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
-
-
-        <!-- Course List -->
-
-
-
         <div class="content-body">
-            <div class="container">
-                <!-- Course List -->
-                <div class="course-list">
-                    <div class="course-list" id="courseList">
-                        <!-- Courses will be injected here dynamically -->
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="d-flex align-items-center mb-4 flex-wrap">
+                    <h3 class="me-auto">Job List</h3>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="table-responsive">
+                            <table class="table display mb-4 dataTablesCard job-table table-responsive-xl card-table" id="example5">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Position</th>
+                                        <th>Type</th>
+                                        <th>Posted Date</th>
+                                        <th>Last Date To Apply</th>
+                                        <th>Close Date</th>
+                                        <th>Status</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Network Engineer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>12-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Entry Level Software Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>13-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td>26-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Java Developer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>13-01-2023</td>
+                                        <td>26-01-2023</td>
+                                        <td>27-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>IOS Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>15-01-2023</td>
+                                        <td>27-01-2023</td>
+                                        <td>28-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Junior Web Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>18-01-2023</td>
+                                        <td>30-01-2023</td>
+                                        <td>31-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>SQL Developer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>12-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Junior Developer</td>
+                                        <td class="wspace-no">part-Time</td>
+                                        <td>15-01-2023</td>
+                                        <td>30-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+        
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Network Engineer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>12-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Entry Level Software Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>13-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td>26-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Java Developer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>13-01-2023</td>
+                                        <td>26-01-2023</td>
+                                        <td>27-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>IOS Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>15-01-2023</td>
+                                        <td>27-01-2023</td>
+                                        <td>28-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Junior Web Developer</td>
+                                        <td class="wspace-no">Part-Time</td>
+                                        <td>18-01-2023</td>
+                                        <td>30-01-2023</td>
+                                        <td>31-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>SQL Developer</td>
+                                        <td class="wspace-no">Full-Time</td>
+                                        <td>12-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td>25-01-2023</td>
+                                        <td><span class="badge badge-success badge-lg light">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Junior Developer</td>
+                                        <td class="wspace-no">part-Time</td>
+                                        <td>15-01-2023</td>
+                                        <td>30-01-2023</td>
+                                        <td>24-01-2023</td>
+                                        <td><span class="badge badge-danger badge-lg light">InActive</span></td>
+                                        <td>
+                                            <div class="action-buttons d-flex justify-content-end">
+                                                <a href="/job-details.html" class="btn btn-success light mr-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
+                                                </a>
+                                               
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <!-- More courses can be listed here -->
-                </div>
-
-
-
-                <!-- Right Section (Add Button) -->
-                <div class="right-section">
-                    <button class="add-course-btn">Add Course</button>
-                </div>
-            </div>
-
-            <!-- Add/Edit Course Modal -->
-            <div id="courseModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" id="closeModalBtn">&times;</span>
-                    <h2 id="modalTitle">Add Course</h2>
-                    <form id="editForm">
-                        <!-- Course Title -->
-                        <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle"
-                            placeholder="AI Explorer: Discover the Future of Technology">
-
-                        <!-- Course Name -->
-                        <label for="editName">Course Name:</label>
-                        <input type="text" id="editName" name="editName" placeholder="ai">
-
-                        <!-- Course Image -->
-                        <label for="editImage">Course Image URL:</label>
-                        <input type="text" id="editImage" name="editImage" placeholder="images/courses/AI-1-image.jpg">
-
-                        <!-- Details Link -->
-                        <label for="editDetailsLink">Details Link:</label>
-                        <input type="text" id="editDetailsLink" name="editDetailsLink"
-                            placeholder="course/singlecourse-detail.html?course=1&name=ai">
-
-                        <!-- Course Objective -->
-                        <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"
-                            placeholder="Enter course objective here"></textarea>
-
-                        <!-- Course Original Price -->
-                        <label for="editOriginalPrice">Original Price:</label>
-                        <input type="text" id="editOriginalPrice" name="editOriginalPrice" placeholder="$89.00">
-
-                        <!-- Course Current Price -->
-                        <label for="editCurrentPrice">Current Price:</label>
-                        <input type="text" id="editCurrentPrice" name="editCurrentPrice" placeholder="Free">
-
-                        <!-- Course Rating -->
-                        <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating" placeholder="4.5">
-
-                        <!-- Video Thumbnail -->
-                        <label for="editVideoThumbnail">Video Thumbnail URL:</label>
-                        <input type="text" id="editVideoThumbnail" name="editVideoThumbnail"
-                            placeholder="https://img.youtube.com/vi/dv9q7Ema40k/maxresdefault.jpg">
-
-                        <!-- Video ID -->
-                        <label for="editVideoId">Video ID:</label>
-                        <input type="text" id="editVideoId" name="editVideoId" placeholder="dv9q7Ema40k">
-
-                        <!-- Course Outline (you can add more dynamic handling for outline if needed) -->
-                        <label for="editOutline">Course Outline:</label>
-                        <textarea id="editOutline" name="editOutline"
-                            placeholder='Example: [{"title": "Intro", "content": "Intro to AI"}]'></textarea>
-
-                        <!-- Save Changes Button -->
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-
-
-
-            <!-- The Add Course Modal -->
-            <div id="courseModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" id="closeModalBtn">&times;</span>
-                    <h2>Edit Course</h2>
-                    <form id="editForm">
-                        <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle">
-
-                        <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"></textarea>
-
-                        <label for="editPrice">Price:</label>
-                        <input type="text" id="editPrice" name="editPrice">
-
-                        <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating">
-
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
-                    </form>
                 </div>
             </div>
         </div>
+
+
+
+
         <!--**********************************
             Footer start
         ***********************************-->
@@ -1471,20 +2153,16 @@
     </div>
 
 
-    <script src="./dashboard/vendor/global/global.min.js"></script>
-    <script src="./dashboard/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="./dashboard/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
-    <script src="./dashboard/vendor/apexchart/apexchart.js"></script>
-    <script src="./dashboard/vendor/chartjs/chart.bundle.min.js"></script>
-    <script src="./dashboard/vendor/peity/jquery.peity.min.js"></script>
-    <script src="./dashboard/js/dashboard/dashboard-1.js"></script>
-    <script src="./dashboard/vendor/owl-carousel/owl.carousel.js"></script>
-    <script src="./dashboard/js/custom.min.js"></script>
-    <script src="./dashboard/js/dlabnav-init.js"></script>
-    <script src="./dashboard/js/plugins-init/chartjs-init.js"></script>
-    <script src="./dashboard/js/dashboard/coursedata.js"></script>
-
-
+    <script src="/dashboard/vendor/global/global.min.js"></script>
+    <script src="/dashboard/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/dashboard/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
+    <script src="/dashboard/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/dashboard/vendor/chartjs/chart.bundle.min.js"></script>
+    <script src="/dashboard/vendor/peity/jquery.peity.min.js"></script>
+    <script src="/dashboard/js/dashboard/dashboard-1.js"></script>
+    <script src="/dashboard/js/custom.min.js"></script>
+    <script src="/dashboard/js/dlabnav-init.js"></script>
+    <script src="/dashboard/js/plugins-init/chartjs-init.js"></script>
     <script>
         function JobickCarousel() {
             /*  testimonial one function by = owl.carousel.js */
@@ -1529,158 +2207,6 @@
             }, 1000);
         });
     </script>
-
-    <script type="module">
-
-        import { coursesData } from './dashboard/js/dashboard/coursedata.js';
-        console.log(coursesData);  // Debugging step
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const modal = document.getElementById('courseModal');
-            const openAddModalBtn = document.querySelector('.add-course-btn');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const saveChangesBtn = document.getElementById('saveChangesBtn');
-            const modalTitle = document.getElementById('modalTitle');
-
-            let isEditing = false; // Flag to track whether we are adding or editing
-            let editingCourseId = null; // Holds the ID of the course being edited
-
-            // Function to generate HTML for each course
-            function generateCourseHTML(course) {
-                return `
-            <div class="course-card" data-id="${course.id}">
-                <div class="course-image">
-                      <img src="https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg" alt="${course.title}" onerror="this.onerror=null;this.src='images/courses/no-image.png';">
-                </div>
-                <div class="course-content">
-                    <h3 class="course-title">${course.title}</h3>
-                    <p class="course-description">${course.objective.substring(0, 100)}...</p>
-                    <p class="course-pricing"><strong>${course.currentPrice}</strong> <del>${course.originalPrice}</del></p>
-                    <p class="course-rating">Rating: ${course.rating} ⭐</p>
-                    <button class="edit-btn" data-id="${course.id}">Edit</button>
-                    <button class="delete-btn" data-id="${course.id}">Delete</button>
-                </div>
-            </div>
-        `;
-            }
-
-            // Function to render all courses
-            function renderCourses() {
-                const courseList = document.getElementById('courseList');
-                courseList.innerHTML = ''; // Clear the course list
-                coursesData.forEach(course => {
-                    const courseHTML = generateCourseHTML(course);
-                    courseList.innerHTML += courseHTML; // Append each course to the courseList container
-                });
-
-                // Add event listeners for the Edit buttons
-                document.querySelectorAll('.edit-btn').forEach(button => {
-                    button.addEventListener('click', handleEditCourse);
-                });
-
-                // Add event listeners for the Delete buttons
-                document.querySelectorAll('.delete-btn').forEach(button => {
-                    button.addEventListener('click', handleDeleteCourse);
-                });
-            }
-
-            // Open modal for adding a new course
-            openAddModalBtn.addEventListener('click', () => {
-                modalTitle.textContent = "Add Course";
-                isEditing = false; // Set to add mode
-                resetFormFields();
-                modal.style.display = 'block'; // Show the modal
-            });
-
-            // Close modal
-            closeModalBtn.addEventListener('click', () => {
-                modal.style.display = 'none'; // Hide the modal
-            });
-
-            // Close modal if the user clicks outside the modal content
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none'; // Hide the modal
-                }
-            });
-
-            // Save changes button click handler (handles both add and edit)
-            saveChangesBtn.addEventListener('click', () => {
-                const title = document.getElementById('editTitle').value;
-                const objective = document.getElementById('editObjective').value;
-                const price = document.getElementById('editPrice').value;
-                const rating = document.getElementById('editRating').value;
-
-                if (isEditing) {
-                    // Edit the existing course
-                    const courseIndex = coursesData.findIndex(course => course.id === editingCourseId);
-                    if (courseIndex > -1) {
-                        coursesData[courseIndex].title = title;
-                        coursesData[courseIndex].objective = objective;
-                        coursesData[courseIndex].currentPrice = price;
-                        coursesData[courseIndex].rating = rating;
-                    }
-                } else {
-                    // Add new course
-                    const newCourse = {
-                        id: coursesData.length + 1, // Simple ID assignment, you can change as needed
-                        title,
-                        objective,
-                        currentPrice: price,
-                        originalPrice: '', // You can add a field for original price
-                        rating,
-                        image: 'path/to/default-image.jpg' // You can add a default image or allow upload
-                    };
-                    coursesData.push(newCourse);
-                }
-
-                renderCourses(); // Re-render the courses list
-                modal.style.display = 'none'; // Close the modal
-            });
-
-            // Function to handle editing a course
-            function handleEditCourse(event) {
-                const courseId = parseInt(event.target.getAttribute('data-id'));
-                const course = coursesData.find(course => course.id === courseId);
-
-                if (course) {
-                    // Populate the form fields with the course data
-                    document.getElementById('editTitle').value = course.title;
-                    document.getElementById('editObjective').value = course.objective;
-                    document.getElementById('editPrice').value = course.currentPrice;
-                    document.getElementById('editRating').value = course.rating;
-
-                    modalTitle.textContent = "Edit Course"; // Update modal title
-                    isEditing = true; // Set to edit mode
-                    editingCourseId = courseId; // Store the current course's ID
-                    modal.style.display = 'block'; // Show the modal
-                }
-            }
-
-            // Function to handle deleting a course
-            function handleDeleteCourse(event) {
-                const courseId = parseInt(event.target.getAttribute('data-id'));
-                coursesData = coursesData.filter(course => course.id !== courseId); // Remove course from the data
-                renderCourses(); // Re-render the courses list
-            }
-
-            // Reset form fields
-            function resetFormFields() {
-                document.getElementById('editTitle').value = '';
-                document.getElementById('editObjective').value = '';
-                document.getElementById('editPrice').value = '';
-                document.getElementById('editRating').value = '';
-            }
-
-            // Initial render of the course list
-            renderCourses();
-        });
-
-    </script>
-
-
-
     <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
         xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
         style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
