@@ -24735,3 +24735,11 @@ div#mCSB_1 {
   background: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+.enbott-logo{
+  width: 200px;
+}
+@media(max-width:768px){
+  .enbott-logo{
+    width: 50px;
+  }
+}
