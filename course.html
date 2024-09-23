@@ -34,164 +34,6 @@
 
     <link rel="stylesheet" href="./dashboard/css/style.css">
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Position the Add Course button to the top right */
-        .right-section {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .add-course-btn {
-            background-color: #f93a0b;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .course-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .course-card {
-            background-color: white;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.05);
-        }
-
-        .course-image img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .course-content {
-            padding: 15px;
-        }
-
-        .course-title {
-            color: #f93a0b;
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .course-description {
-            color: #333;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .course-pricing {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .course-rating {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Modal Styles */
-        #courseModal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1000;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black with opacity */
-            justify-content: center;
-            /* Center horizontally */
-            align-items: center;
-            /* Center vertically */
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
-            /* Adjust as needed */
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Close Button */
-        #closeModalBtn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        #closeModalBtn:hover,
-        #closeModalBtn:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-        input,
-        textarea {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #f93a0b;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
 </head>
 
 <body>
@@ -891,7 +733,7 @@
                                                     class="flaticon-381-search-2"></i></button></span>
                                     </div>
                                 </form>
-                                
+
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -1349,24 +1191,26 @@
 
         <!-- Course List -->
 
-
-
         <div class="content-body">
-            <div class="container">
-                <!-- Course List -->
-                <div class="course-list">
-                    <div class="course-list" id="courseList">
-                        <!-- Courses will be injected here dynamically -->
+            <div class="container-fluid">
+                <div class="page-titles d-flex justify-content-between align-items-center">
+                    <!-- Title at the start -->
+                    <h2 class="page-title">Courses</h2>
+        
+                    <!-- Right Section (Add Course Button moved to the end) -->
+                    <div class="right-section">
+                        <button class="add-course-btn btn btn-success">Add Course</button>
                     </div>
-                    <!-- More courses can be listed here -->
                 </div>
 
-
+                <!-- Course List -->
+                
+                <div class="row" id="courseList">
+                    <!-- Courses will be injected here dynamically using the Bootstrap card layout -->
+                </div>
 
                 <!-- Right Section (Add Button) -->
-                <div class="right-section">
-                    <button class="add-course-btn">Add Course</button>
-                </div>
+               
             </div>
 
             <!-- Add/Edit Course Modal -->
@@ -1377,84 +1221,67 @@
                     <form id="editForm">
                         <!-- Course Title -->
                         <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle"
+                        <input type="text" id="editTitle" name="editTitle" class="form-control"
                             placeholder="AI Explorer: Discover the Future of Technology">
 
                         <!-- Course Name -->
                         <label for="editName">Course Name:</label>
-                        <input type="text" id="editName" name="editName" placeholder="ai">
+                        <input type="text" id="editName" name="editName" class="form-control" placeholder="ai">
 
                         <!-- Course Image -->
                         <label for="editImage">Course Image URL:</label>
-                        <input type="text" id="editImage" name="editImage" placeholder="images/courses/AI-1-image.jpg">
+                        <input type="text" id="editImage" name="editImage" class="form-control"
+                            placeholder="images/courses/AI-1-image.jpg">
 
                         <!-- Details Link -->
                         <label for="editDetailsLink">Details Link:</label>
-                        <input type="text" id="editDetailsLink" name="editDetailsLink"
+                        <input type="text" id="editDetailsLink" name="editDetailsLink" class="form-control"
                             placeholder="course/singlecourse-detail.html?course=1&name=ai">
 
                         <!-- Course Objective -->
                         <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"
+                        <textarea id="editObjective" name="editObjective" class="form-control"
                             placeholder="Enter course objective here"></textarea>
 
                         <!-- Course Original Price -->
                         <label for="editOriginalPrice">Original Price:</label>
-                        <input type="text" id="editOriginalPrice" name="editOriginalPrice" placeholder="$89.00">
+                        <input type="text" id="editOriginalPrice" name="editOriginalPrice" class="form-control"
+                            placeholder="$89.00">
 
                         <!-- Course Current Price -->
                         <label for="editCurrentPrice">Current Price:</label>
-                        <input type="text" id="editCurrentPrice" name="editCurrentPrice" placeholder="Free">
+                        <input type="text" id="editCurrentPrice" name="editCurrentPrice" class="form-control"
+                            placeholder="Free">
 
                         <!-- Course Rating -->
                         <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating" placeholder="4.5">
+                        <input type="number" step="0.1" max="5" id="editRating" name="editRating" class="form-control"
+                            placeholder="4.5">
 
                         <!-- Video Thumbnail -->
                         <label for="editVideoThumbnail">Video Thumbnail URL:</label>
-                        <input type="text" id="editVideoThumbnail" name="editVideoThumbnail"
+                        <input type="text" id="editVideoThumbnail" name="editVideoThumbnail" class="form-control"
                             placeholder="https://img.youtube.com/vi/dv9q7Ema40k/maxresdefault.jpg">
 
                         <!-- Video ID -->
                         <label for="editVideoId">Video ID:</label>
-                        <input type="text" id="editVideoId" name="editVideoId" placeholder="dv9q7Ema40k">
+                        <input type="text" id="editVideoId" name="editVideoId" class="form-control"
+                            placeholder="dv9q7Ema40k">
 
-                        <!-- Course Outline (you can add more dynamic handling for outline if needed) -->
+                        <!-- Course Outline -->
                         <label for="editOutline">Course Outline:</label>
-                        <textarea id="editOutline" name="editOutline"
+                        <textarea id="editOutline" name="editOutline" class="form-control"
                             placeholder='Example: [{"title": "Intro", "content": "Intro to AI"}]'></textarea>
 
                         <!-- Save Changes Button -->
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-
-
-
-            <!-- The Add Course Modal -->
-            <div id="courseModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" id="closeModalBtn">&times;</span>
-                    <h2>Edit Course</h2>
-                    <form id="editForm">
-                        <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle">
-
-                        <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"></textarea>
-
-                        <label for="editPrice">Price:</label>
-                        <input type="text" id="editPrice" name="editPrice">
-
-                        <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating">
-
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
+                        <button type="button" id="saveChangesBtn" class="btn btn-primary mt-3">Save Changes</button>
                     </form>
                 </div>
             </div>
         </div>
+
+
+
         <!--**********************************
             Footer start
         ***********************************-->
@@ -1547,28 +1374,35 @@
             let editingCourseId = null; // Holds the ID of the course being edited
 
             // Function to generate HTML for each course
+            // Function to generate HTML for each course
             function generateCourseHTML(course) {
                 return `
-            <div class="course-card" data-id="${course.id}">
-                <div class="course-image">
-                      <img src="https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg" alt="${course.title}" onerror="this.onerror=null;this.src='images/courses/no-image.png';">
-                </div>
-                <div class="course-content">
-                    <h3 class="course-title">${course.title}</h3>
-                    <p class="course-description">${course.objective.substring(0, 100)}...</p>
-                    <p class="course-pricing"><strong>${course.currentPrice}</strong> <del>${course.originalPrice}</del></p>
-                    <p class="course-rating">Rating: ${course.rating} ⭐</p>
-                    <button class="edit-btn" data-id="${course.id}">Edit</button>
-                    <button class="delete-btn" data-id="${course.id}">Delete</button>
-                </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg" alt="${course.title}" onerror="this.onerror=null;this.src='images/courses/no-image.png';">
+            <div class="card-header">
+                <h5 class="card-title">${course.title}</h5>
             </div>
-        `;
+            <div class="card-body">
+                <p class="card-text">${course.objective.substring(0, 100)}...</p>
+                <p class="card-text text-dark">Price: <strong>${course.currentPrice}</strong> <del>${course.originalPrice}</del></p>
+                <p class="card-text text-dark">Rating: ${course.rating} ⭐</p>
+                <button class="edit-btn btn btn-primary" data-id="${course.id}">Edit</button>
+                <button class="delete-btn btn btn-danger" data-id="${course.id}">Delete</button>
+            </div>
+        </div>
+    </div>
+    `;
             }
 
+
+            // Function to render all courses
             // Function to render all courses
             function renderCourses() {
                 const courseList = document.getElementById('courseList');
                 courseList.innerHTML = ''; // Clear the course list
+                courseList.classList.add('row'); // Add the Bootstrap row class
+
                 coursesData.forEach(course => {
                     const courseHTML = generateCourseHTML(course);
                     courseList.innerHTML += courseHTML; // Append each course to the courseList container
@@ -1584,6 +1418,7 @@
                     button.addEventListener('click', handleDeleteCourse);
                 });
             }
+
 
             // Open modal for adding a new course
             openAddModalBtn.addEventListener('click', () => {
