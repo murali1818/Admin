@@ -19,7 +19,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- PAGE TITLE HERE -->
-	<title>Candidate</title>
+	<title>Employee</title>
     
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="./dashboard/images/favicon.png">
@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="./dashboard/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
 	
     <link rel="stylesheet" href="./dashboard/css/style.css">
+    
 	
 	
     
@@ -697,7 +698,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Candidates
+                               SME connect
                             </div>
                             <div class="nav-item d-flex align-items-center">
                                 <form action="dashboard.index">
@@ -1168,528 +1169,225 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
-        <div class="content-body">
+        <div class="content-body" style="min-height: 577px;">
             <div class="container-fluid">
+               
                 <!-- row -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-xl-6 col-lg-6 ">
+                        <div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h2 class="card-title">Candidate</h2>
+                            </div>
+                            <div class="card-body pb-0">
+                               
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Name</strong>
+                                        <span class="mb-0">Murali</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Gender</strong>
+                                        <span class="mb-0">Male</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Education</strong>
+                                        <span class="mb-0">B.E</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Designation</strong>
+                                        <span class="mb-0">Web developer</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Status</strong>
+                                        <span class="badge light badge-warning">pending</span>
+                                    </li>
+                                   
+                                </ul>
+                                
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Profile Datatable</h4>
+                                <h4 class="card-title">Reply Message</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example3" class="display" style="min-width: 845px">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Name</th>
-                                                <th>Gender</th>
-                                                <th>Education</th>
-                                                <th>Mobile</th>
-                                                <th>Email</th>  
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Tiger Nixon</td>
-                                            
-                                                <td>Male</td>
-                                                <td>M.COM., P.H.D.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>												
-                                                </td>												
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Garrett Winters</td>
-                                               
-                                                <td>Female</td>
-                                                <td>M.COM., P.H.D.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Ashton Cox</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Cedric Kelly</td>
-                                            
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Airi Satou</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Brielle Williamson</td>
-                                                
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Herrod Chandler</td>
-                                                
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Rhona Davidson</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Colleen Hurst</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Sonya Frost</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Jena Gaines</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Quinn Flynn</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Charde Marshall</td>
-                                            
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Haley Kennedy</td>
-                                                
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Tatyana Fitzpatrick</td>
-                                                
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Michael Silva</td>
-                                                
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Paul Byrd</td>
-                                                
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Gloria Little</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Bradley Greer</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Dai Rios</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Jenette Caldwell</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Yuri Berry</td>
-                                                
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Caesar Vance</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Doris Wilder</td>
-                                               
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Angelica Ramos</td>
-                                              
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Gavin Joyce</td>
-                                                
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Jennifer Chang</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Brenden Wagner</td>
-                                                
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                                
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Fiona Green</td>
-                                               
-                                                <td>Male</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                               
-                                                <td>
-                                                    <div class="d-flex">
-                                                                                                                 <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35" src="dashboard/images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Shou Itou</td>
-                                                
-                                                <td>Female</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+                                <div class="basic-form">
+                                    <form>
+                                        <div class="mb-3">
+                                            <textarea class="form-control" rows="8" id="comment"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="text-start mt-4 mb-3">
+                                    <button class="btn btn-primary btn-sl-sm me-2" type="button"><span class="me-2"><i class="fa fa-paper-plane"></i></span>Send</button>
+                                    <button class="btn btn-danger light btn-sl-sm" type="button"><span class="me-2"><i class="fa fa-times"></i></span>Discard</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Candidate Query</h4>
+                            </div>
+                            <div class="card-body px-0">
+                                <div id="Candidate_Message" class="message-box px-4 py-3">
+                                    <div class="message-header">
+                                        <h6 class="text-muted mb-0">From: candidate@example.com</h6>
+                                        <span class="text-muted">5 minutes ago</span>
+                                    </div>
+                                    <div class="message-content mt-3">
+                                        <p class="mb-2"><strong>Subject:</strong> Web Development Resources</p>
+                                        <p>Hello, I would like to know more about the resources available for learning full-stack web development. I am particularly interested in mastering React.js and Django. Could you provide some guidance on where to start?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button id="completeBtn" class="btn btn-success">Mark as Complete</button>
+                                <button id="completeBtn" class="btn btn-danger">On Hold</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- JavaScript -->
+                   
+                    
+                    <!-- CSS -->
+                   
+                    <div class="col-xl-4 col-xxl-6 col-lg-6">
+                        <div class="card border-0 pb-0">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Available</h4>
+                            </div>
+                            <div class="card-body px-0"> 
+                                <div id="DZ_W_Todo3" class="widget-media dlab-scroll height370 px-4">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2">
+                                                    <img alt="image" width="50" src="/dashboard/images/avatar/1.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Alfie Mason <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
                                                     
-                                                <td>
-                                                    <div class="d-flex">
-                                                         <a href="./candidate-details.html" class="btn btn-success shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Connect </button>
+                                                    <div class="dropdown-menu dropdown-menu-end" style="">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2 media-info">
+                                                    KG
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2 media-success">
+                                                    <img alt="image" width="50" src="/dashboard/images/avatar/2.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Jack Ronan <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                            <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2">
+                                                    <img alt="image" width="50" src="/dashboard/images/avatar/1.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Noah Baldon <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2 media-danger">
+                                                    PU
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Thomas Grady  <small class="text-muted">02:26 PM</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-danger light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2 media-primary">
+                                                    <img alt="image" width="50" src="/dashboard/images/avatar/3.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Oscar Weston  <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                   
         </div>
-
-
 
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/" target="_blank">Infoziant It
+                <p>Copyright © Designed &amp; Developed by <a href="https://Infoziant.com/" target="_blank">Infoziant It
                         Solutions</a> 2024</p>
             </div>
         </div>

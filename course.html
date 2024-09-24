@@ -33,145 +33,51 @@
     <link rel="stylesheet" href="./dashboard/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
 
     <link rel="stylesheet" href="./dashboard/css/style.css">
-
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Position the Add Course button to the top right */
-        .right-section {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .add-course-btn {
-            background-color: #f93a0b;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .course-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .course-card {
-            background-color: white;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.05);
-        }
-
-        .course-image img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .course-content {
-            padding: 15px;
-        }
-
-        .course-title {
-            color: #f93a0b;
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .course-description {
-            color: #333;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .course-pricing {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .course-rating {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Modal Styles */
-        #courseModal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1000;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black with opacity */
-            justify-content: center;
-            /* Center horizontally */
-            align-items: center;
-            /* Center vertically */
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
-            /* Adjust as needed */
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Close Button */
-        #closeModalBtn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        #closeModalBtn:hover,
-        #closeModalBtn:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
 
 
-        input,
+
+#courseModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Adjust as needed */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+#closeModalBtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#closeModalBtn:hover,
+#closeModalBtn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+        .input,
         textarea {
             display: block;
             width: 100%;
@@ -192,6 +98,8 @@
             font-size: 16px;
         }
     </style>
+  
+
 </head>
 
 <body>
@@ -206,42 +114,16 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="dashboard.html" class="brand-logo">
-                <svg class="logo-abbr" xmlns="http://www.w3.org/2000/svg" width="62.074" height="65.771"
-                    viewBox="0 0 62.074 65.771">
-                    <g id="search_11_" data-name="search (11)" transform="translate(12.731 12.199)">
-                        <rect class="rect-info-rect" id="Rectangle_1" data-name="Rectangle 1" width="60" height="60"
-                            rx="30" transform="translate(-10.657 -12.199)" fill="#f73a0b" />
-                        <path id="Path_2001" data-name="Path 2001"
-                            d="M32.7,5.18a17.687,17.687,0,0,0-25.8,24.176l-19.8,21.76a1.145,1.145,0,0,0,0,1.62,1.142,1.142,0,0,0,.81.336,1.142,1.142,0,0,0,.81-.336l19.8-21.76a17.687,17.687,0,0,0,29.357-13.29A17.57,17.57,0,0,0,32.7,5.18Zm-1.62,23.392A15.395,15.395,0,0,1,9.312,6.8,15.395,15.395,0,1,1,31.083,28.572Zm0,0"
-                            transform="translate(1 0)" fill="#fff" stroke="#fff" stroke-width="1" />
-                        <path id="Path_2002" data-name="Path 2002"
-                            d="M192.859,115.547a4.523,4.523,0,0,0,.7-2.415v-2.284a4.55,4.55,0,0,0-9.1,0v2.284a4.523,4.523,0,0,0,.7,2.415,4.954,4.954,0,0,0-3.708,4.788v1.623a2.4,2.4,0,0,0,2.4,2.4h10.323a2.4,2.4,0,0,0,2.4-2.4v-1.623a4.954,4.954,0,0,0-3.708-4.788Zm-6.114-4.7a2.259,2.259,0,0,1,4.518,0v2.284a2.259,2.259,0,1,1-4.518,0Zm7.53,11.111a.11.11,0,0,1-.11.11H183.843a.11.11,0,0,1-.11-.11v-1.623a2.656,2.656,0,0,1,2.653-2.653h5.237a2.656,2.656,0,0,1,2.653,2.653Zm0,0"
-                            transform="translate(-168.591 -98.178)" fill="#fff" stroke="#fff" stroke-width="1" />
-                    </g>
-                </svg>
-
-
-
-                <svg class="brand-title" xmlns="http://www.w3.org/2000/svg" width="134.01" height="48.365"
-                    viewBox="0 0 134.01 48.365">
-                    <g id="Group_38" data-name="Group 38" transform="translate(-133.99 -40.635)">
-                        <text id="Job_Admin_Dashboard" data-name="Job Admin Dashboard" transform="translate(134 85)"
-                            fill="#787878" font-size="12" font-family="Poppins-Light, Poppins" font-weight="300">
-                            <tspan x="0" y="0">Admin Dashboard</tspan>
-                        </text>
-                        <path id="Path_1948" data-name="Path 1948"
-                            d="M.36,6.616a1.661,1.661,0,0,0,1.094-.422,1.287,1.287,0,0,0,.5-1.016V-11.738H7.52L7.551,5.271A8.16,8.16,0,0,1,6.91,8.789a4.074,4.074,0,0,1-2.2,1.985,11.542,11.542,0,0,1-4.346.657ZM17.651,9.68A7.316,7.316,0,0,1,13.7,8.617a7.008,7.008,0,0,1-2.626-2.97,9.786,9.786,0,0,1-.922-4.315,9.276,9.276,0,0,1,.907-4.174,6.935,6.935,0,0,1,2.6-2.877,7.438,7.438,0,0,1,4-1.047,7.607,7.607,0,0,1,4.018,1.032,6.8,6.8,0,0,1,2.611,2.861,9.349,9.349,0,0,1,.907,4.205,9.759,9.759,0,0,1-.922,4.33,6.993,6.993,0,0,1-2.642,2.955A7.4,7.4,0,0,1,17.651,9.68Zm0-4.565a1.753,1.753,0,0,0,1.438-.954,5.2,5.2,0,0,0,.625-2.83,4.8,4.8,0,0,0-.594-2.626,1.73,1.73,0,0,0-1.47-.907,1.694,1.694,0,0,0-1.454.907,4.908,4.908,0,0,0-.578,2.626,5.309,5.309,0,0,0,.61,2.83A1.718,1.718,0,0,0,17.651,5.115Zm17.478,4.6q-2.345,0-5.972-.375L27.75,9.18V-12.238h5.44V-6.11q.25-.094.844-.3a6.64,6.64,0,0,1,1.079-.281,6.807,6.807,0,0,1,1.079-.078,5.75,5.75,0,0,1,4.737,1.939q1.579,1.939,1.579,6.285,0,4.377-1.767,6.316T35.129,9.711Zm-.594-4.878a2.3,2.3,0,0,0,1.876-.719A4.131,4.131,0,0,0,37,1.551Q37-1.92,34.754-1.92q-.719,0-1.563.063v6.6A10.43,10.43,0,0,0,34.535,4.834ZM45.134-6.36h5.44V9.274h-5.44Zm.031-6.222h5.44V-7.36h-5.44ZM59.611,9.68a5.9,5.9,0,0,1-4.909-2q-1.595-2-1.595-6.222a12.451,12.451,0,0,1,.844-5.143A4.635,4.635,0,0,1,56.3-6.125a9.87,9.87,0,0,1,3.846-.641,13.2,13.2,0,0,1,2.095.188q1.157.188,3.033.625L65.145-1.7q-2.908-.219-3.627-.219a4.459,4.459,0,0,0-1.845.3,1.565,1.565,0,0,0-.844.985,6.976,6.976,0,0,0-.219,2A7.45,7.45,0,0,0,58.845,3.5a1.625,1.625,0,0,0,.86,1.032,4.362,4.362,0,0,0,1.813.3l3.6-.219L65.27,8.9A27.641,27.641,0,0,1,59.611,9.68Zm8.473-21.918h5.44V-.325l1.032-.406L76.714-6.36H82.78L79.4,1.207,83,9.274H76.9L74.744,3.958l-1.219.406V9.274h-5.44Z"
-                            transform="translate(133.63 53.217)" fill="#464646" />
-                    </g>
-                </svg>
-
+            <a href="./dashboard.html" class="brand-logo">
+                <img class="enbott-favicon" src="./dashboard/images/favicon.png" alt="enbott-logo" style="display: none;"/>
+                <img class="enbott-logo" src="./dashboard/images/enbott-logo.png" alt="enbott-logo"  />
             </a>
             <div class="nav-control">
-                <div class="hamburger">
+                <div class="hamburger" id="hamburger">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </div>
             </div>
+            
         </div>
         <!--**********************************
             Nav header end
@@ -891,7 +773,7 @@
                                                     class="flaticon-381-search-2"></i></button></span>
                                     </div>
                                 </form>
-                                
+
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -1300,38 +1182,46 @@
                 </div>
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a class="" href="dashboard.html" aria-expanded="">
+                        <a class="" href="./dashboard.html" aria-expanded="false">
                             <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
                             <span class="nav-text">Dashboard</span>
                         </a>
 
                     </li>
                     <li>
-                        <a class="" href="candidate.html" aria-expanded="false">
+                        <a class="" href="./candidate.html" aria-expanded="false">
                             <i class="fas fa-user"></i> <!-- Candidate icon -->
                             <span class="nav-text">Candidate</span>
                         </a>
 
                     </li>
                     <li>
-                        <a class="" href="employee.html" aria-expanded="false">
+                        <a class="" href="./employee.html" aria-expanded="false">
                             <i class="fas fa-briefcase"></i> <!-- Employee icon -->
                             <span class="nav-text">Employee</span>
                         </a>
 
                     </li>
                     <li>
-                        <a class="" href="" aria-expanded="false">
-                            <i class="fas fa-book"></i> <!-- Course icon -->
+                        <a class="" href="./course.html" aria-expanded="false">
+                            <i class="fas fa-book"></i>
                             <span class="nav-text">Course</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="jobs.html" aria-expanded="false">
+                        <a class="" href="./jobs.html" aria-expanded="false">
                             <i class="flaticon-093-waving"></i><!-- Course icon -->
                             <span class="nav-text">Jobs</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="" href="./sme-connect.html" aria-expanded="false">
+                            <i class="fas fa-project-diagram"></i><!-- Course icon -->
+                            <span class="nav-text">SME connect</span>
+                        </a>
+                        
+                    </li>
+
                 </ul>
 
 
@@ -1349,24 +1239,26 @@
 
         <!-- Course List -->
 
-
-
         <div class="content-body">
-            <div class="container">
-                <!-- Course List -->
-                <div class="course-list">
-                    <div class="course-list" id="courseList">
-                        <!-- Courses will be injected here dynamically -->
+            <div class="container-fluid">
+                <div class="page-titles d-flex justify-content-between align-items-center">
+                    <!-- Title at the start -->
+                    <h2 class="page-title">Courses</h2>
+
+                    <!-- Right Section (Add Course Button moved to the end) -->
+                    <div class="right-section">
+                        <button class="add-course-btn btn btn-success">Add Course</button>
                     </div>
-                    <!-- More courses can be listed here -->
                 </div>
 
+                <!-- Course List -->
 
+                <div class="row" id="courseList">
+                    <!-- Courses will be injected here dynamically using the Bootstrap card layout -->
+                </div>
 
                 <!-- Right Section (Add Button) -->
-                <div class="right-section">
-                    <button class="add-course-btn">Add Course</button>
-                </div>
+
             </div>
 
             <!-- Add/Edit Course Modal -->
@@ -1377,84 +1269,57 @@
                     <form id="editForm">
                         <!-- Course Title -->
                         <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle"
-                            placeholder="AI Explorer: Discover the Future of Technology">
-
+                        <input type="text" id="editTitle" class="input" name="editTitle" placeholder="AI Explorer: Discover the Future of Technology">
+            
                         <!-- Course Name -->
                         <label for="editName">Course Name:</label>
-                        <input type="text" id="editName" name="editName" placeholder="ai">
-
+                        <input type="text" id="editName" class="input" name="editName" placeholder="ai">
+            
                         <!-- Course Image -->
                         <label for="editImage">Course Image URL:</label>
-                        <input type="text" id="editImage" name="editImage" placeholder="images/courses/AI-1-image.jpg">
-
+                        <input type="text" id="editImage"  class="input" name="editImage" placeholder="images/courses/AI-1-image.jpg">
+            
                         <!-- Details Link -->
                         <label for="editDetailsLink">Details Link:</label>
-                        <input type="text" id="editDetailsLink" name="editDetailsLink"
-                            placeholder="course/singlecourse-detail.html?course=1&name=ai">
-
+                        <input type="text" id="editDetailsLink" class="input" name="editDetailsLink" placeholder="course/singlecourse-detail.html?course=1&name=ai">
+            
                         <!-- Course Objective -->
                         <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"
-                            placeholder="Enter course objective here"></textarea>
-
+                        <textarea id="editObjective" name="editObjective" class="input" placeholder="Enter course objective here"></textarea>
+            
                         <!-- Course Original Price -->
                         <label for="editOriginalPrice">Original Price:</label>
-                        <input type="text" id="editOriginalPrice" name="editOriginalPrice" placeholder="$89.00">
-
+                        <input type="text" id="editOriginalPrice" class="input" name="editOriginalPrice" placeholder="$89.00">
+            
                         <!-- Course Current Price -->
                         <label for="editCurrentPrice">Current Price:</label>
-                        <input type="text" id="editCurrentPrice" name="editCurrentPrice" placeholder="Free">
-
+                        <input type="text" id="editCurrentPrice" class="input" name="editCurrentPrice" placeholder="Free">
+            
                         <!-- Course Rating -->
                         <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating" placeholder="4.5">
-
+                        <input type="number" step="0.1" max="5" class="input" id="editRating" name="editRating" placeholder="4.5">
+            
                         <!-- Video Thumbnail -->
                         <label for="editVideoThumbnail">Video Thumbnail URL:</label>
-                        <input type="text" id="editVideoThumbnail" name="editVideoThumbnail"
-                            placeholder="https://img.youtube.com/vi/dv9q7Ema40k/maxresdefault.jpg">
-
+                        <input type="text" id="editVideoThumbnail" class="input" name="editVideoThumbnail" placeholder="https://img.youtube.com/vi/dv9q7Ema40k/maxresdefault.jpg">
+            
                         <!-- Video ID -->
                         <label for="editVideoId">Video ID:</label>
-                        <input type="text" id="editVideoId" name="editVideoId" placeholder="dv9q7Ema40k">
-
+                        <input type="text" id="editVideoId" class="input" name="editVideoId" placeholder="dv9q7Ema40k">
+            
                         <!-- Course Outline (you can add more dynamic handling for outline if needed) -->
                         <label for="editOutline">Course Outline:</label>
-                        <textarea id="editOutline" name="editOutline"
-                            placeholder='Example: [{"title": "Intro", "content": "Intro to AI"}]'></textarea>
-
+                        <textarea id="editOutline" name="editOutline" class="input" placeholder='Example: [{"title": "Intro", "content": "Intro to AI"}]'></textarea>
+            
                         <!-- Save Changes Button -->
                         <button type="button" id="saveChangesBtn">Save Changes</button>
                     </form>
                 </div>
             </div>
-
-
-
-            <!-- The Add Course Modal -->
-            <div id="courseModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" id="closeModalBtn">&times;</span>
-                    <h2>Edit Course</h2>
-                    <form id="editForm">
-                        <label for="editTitle">Course Title:</label>
-                        <input type="text" id="editTitle" name="editTitle">
-
-                        <label for="editObjective">Course Objective:</label>
-                        <textarea id="editObjective" name="editObjective"></textarea>
-
-                        <label for="editPrice">Price:</label>
-                        <input type="text" id="editPrice" name="editPrice">
-
-                        <label for="editRating">Rating:</label>
-                        <input type="number" step="0.1" max="5" id="editRating" name="editRating">
-
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
-                    </form>
-                </div>
-            </div>
         </div>
+
+
+
         <!--**********************************
             Footer start
         ***********************************-->
@@ -1528,6 +1393,29 @@
                 JobickCarousel();
             }, 1000);
         });
+        document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const favicon = document.querySelector('.enbott-favicon');
+    const logo = document.querySelector('.enbott-logo');
+    
+    let isNavOpen = false;
+
+    hamburger.addEventListener('click', function() {
+        isNavOpen = !isNavOpen;
+        
+        if (isNavOpen) {
+            // Show the logo and hide the favicon
+            logo.style.display = 'none';
+            favicon.style.display = 'block';
+        } else {
+            // Show the favicon and hide the logo
+            
+            logo.style.display = 'block';
+            favicon.style.display = 'none';
+        }
+    });
+});
+
     </script>
 
     <script type="module">
@@ -1547,28 +1435,35 @@
             let editingCourseId = null; // Holds the ID of the course being edited
 
             // Function to generate HTML for each course
+            // Function to generate HTML for each course
             function generateCourseHTML(course) {
                 return `
-            <div class="course-card" data-id="${course.id}">
-                <div class="course-image">
-                      <img src="https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg" alt="${course.title}" onerror="this.onerror=null;this.src='images/courses/no-image.png';">
-                </div>
-                <div class="course-content">
-                    <h3 class="course-title">${course.title}</h3>
-                    <p class="course-description">${course.objective.substring(0, 100)}...</p>
-                    <p class="course-pricing"><strong>${course.currentPrice}</strong> <del>${course.originalPrice}</del></p>
-                    <p class="course-rating">Rating: ${course.rating} ⭐</p>
-                    <button class="edit-btn" data-id="${course.id}">Edit</button>
-                    <button class="delete-btn" data-id="${course.id}">Delete</button>
-                </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg" alt="${course.title}" onerror="this.onerror=null;this.src='images/courses/no-image.png';">
+            <div class="card-header">
+                <h5 class="card-title">${course.title}</h5>
             </div>
-        `;
+            <div class="card-body">
+                <p class="card-text">${course.objective.substring(0, 100)}...</p>
+                <p class="card-text text-dark">Price: <strong>${course.currentPrice}</strong> <del>${course.originalPrice}</del></p>
+                <p class="card-text text-dark">Rating: ${course.rating} ⭐</p>
+                <button class="edit-btn btn btn-primary" data-id="${course.id}">Edit</button>
+                <button class="delete-btn btn btn-danger" data-id="${course.id}">Delete</button>
+            </div>
+        </div>
+    </div>
+    `;
             }
 
+
+            // Function to render all courses
             // Function to render all courses
             function renderCourses() {
                 const courseList = document.getElementById('courseList');
                 courseList.innerHTML = ''; // Clear the course list
+                courseList.classList.add('row'); // Add the Bootstrap row class
+
                 coursesData.forEach(course => {
                     const courseHTML = generateCourseHTML(course);
                     courseList.innerHTML += courseHTML; // Append each course to the courseList container
@@ -1585,9 +1480,11 @@
                 });
             }
 
+
             // Open modal for adding a new course
             openAddModalBtn.addEventListener('click', () => {
                 modalTitle.textContent = "Add Course";
+                console.log("open")
                 isEditing = false; // Set to add mode
                 resetFormFields();
                 modal.style.display = 'block'; // Show the modal
@@ -1669,7 +1566,7 @@
             function resetFormFields() {
                 document.getElementById('editTitle').value = '';
                 document.getElementById('editObjective').value = '';
-                document.getElementById('editPrice').value = '';
+               
                 document.getElementById('editRating').value = '';
             }
 
