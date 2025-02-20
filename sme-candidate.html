@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="./dashboard/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
 	
     <link rel="stylesheet" href="./dashboard/css/style.css">
+    
 	
 	
     
@@ -697,7 +698,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                               Employee details
+                               SME connect
                             </div>
                             <div class="nav-item d-flex align-items-center">
                                 <form action="dashboard.index">
@@ -1168,241 +1169,207 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
-        <div class="content-body">
-            <!-- row -->
+        <div class="content-body" style="min-height: 577px;">
             <div class="container-fluid">
-                <div class="d-flex align-items-center mb-4">
-                    <h3 class="me-auto">User Profile</h3>
-                    <div>
-                        <a href="javascript:void(0);" class="icon-btn me-3"> <i class="fas fa-envelope"></i></a>
-                        <a href="javascript:void(0);" class="icon-btn me-3"><i class="fas fa-phone-alt"></i></a>
-                        <a href="javascript:void(0);" class="icon-btn"><i class="fas fa-info"></i></a>
-                    </div>
-                </div>
+               
+                <!-- row -->
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-6 col-lg-6 ">
                         <div class="card">
-                            <div class="card-header border-0 flex-wrap align-items-start">
-                                <div class="col-md-8">
-                                    <div class="user d-sm-flex d-block pe-md-5 pe-0">
-                                        <img src="./dashboard/images/profile/pic1.jpg" alt="">
-                                        <div class="ms-sm-3 ms-0 me-md-5 md-0">
-                                            <h5 class="mb-1"><a href="javascript:void(0);" class="text-dark">Andrew Jonson</a></h5>
-                                            <div class="listline-wrapper mb-2">
-                                                <span class="item"><i class="text-primary far fa-envelope"></i>example@gmail.com</span>
-                                                <span class="item"><i class="text-primary far fa-id-badge"></i>Manager</span>
-                                                <span class="item"><i class="text-primary fas fa-map-marker-alt"></i>Indonesia</span>
-                                            </div>
-                                            <p>A data analyst collects, interprets and visualizes data to uncover insights. A data analyst assigns a numerical value to business functions so performance.</p>
+                            <div class="card-header border-0 pb-0">
+                                <h2 class="card-title">Candidate</h2>
+                            </div>
+                            <div class="card-body pb-0">
+                               
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Name</strong>
+                                        <span class="mb-0">Murali</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Gender</strong>
+                                        <span class="mb-0">Male</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Education</strong>
+                                        <span class="mb-0">B.E</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Designation</strong>
+                                        <span class="mb-0">Web developer</span>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 justify-content-between">
+                                        <strong>Status</strong>
+                                        <span class="badge light badge-warning">pending</span>
+                                    </li>
+                                   
+                                </ul>
+                                
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Reply Message</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form>
+                                        <div class="mb-3">
+                                            <textarea class="form-control" rows="8" id="comment"></textarea>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-                        
+                                <div class="text-start mt-4 mb-3">
+                                    <button class="btn btn-primary btn-sl-sm me-2" type="button"><span class="me-2"><i class="fa fa-paper-plane"></i></span>Send</button>
+                                    <button class="btn btn-danger light btn-sl-sm" type="button"><span class="me-2"><i class="fa fa-times"></i></span>Discard</button>
+                                </div>
                             </div>
-                            <div class="card-body pt-0">
-                                <h4 class="card-title">Description</h4>
-                                <div class="row">
-                                    <div class="col-xl-6 col-md-6">
-                                        <ul class="list-style-1">
-                                            <li><label class="custom-label-2 mb-0">Full Name :</label>Andrew Jonson</li>
-                                            <li><label class="custom-label-2 mb-0">Resume Title :</label>Searching For PHP Doveloper</li>
-                                            <li><label class="custom-label-2 mb-0">Current Designation :</label>PHP Programmer</li>
-                                            <li><label class="custom-label-2 mb-0">Annual Salary :</label>$7.5Lacs</li>
-                                            <li><label class="custom-label-2 mb-0">Current Company :</label>Abcd pvt Ltd</li>
-                                            <li><label class="custom-label-2 mb-0">Experience :</label>3 Yrs</li>
-                                            <li><label class="custom-label-2 mb-0">Location :</label>USA</li>
-                                            <li><label class="custom-label-2 mb-0">Preferred Location :</label>AUSA</li>
-                                            <li><label class="custom-label-2 mb-0">Qualification :</label>B.Tech(CSE)</li>
-                                            <li><label class="custom-label-2 mb-0">Key Skills :</label>Good Communication, Planning and research skills</li>
-                                        </ul>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Candidate Query</h4>
+                            </div>
+                            <div class="card-body px-0">
+                                <div id="Candidate_Message" class="message-box px-4 py-3">
+                                    <div class="message-header">
+                                        <h6 class="text-muted mb-0">From: candidate@example.com</h6>
+                                        <span class="text-muted">5 minutes ago</span>
                                     </div>
-                                    <div class="col-xl-6 col-md-6">
-                                        <ul class="list-style-1">
-                                            <li><label class="custom-label-2 mb-0">Launguages :</label>English, German, Spanish</li>
-                                            <li><label class="custom-label-2 mb-0">Email :</label>andrew@gmail.com</li>
-                                            <li><label class="custom-label-2 mb-0">Phone :</label>1234598765</li>
-                                            <li><label class="custom-label-2 mb-0">Industry :</label>it Software/ Developer</li>
-                                            <li><label class="custom-label-2 mb-0">Date Of Birth :</label>13 June 1996</li>
-                                            <li><label class="custom-label-2 mb-0">Gender :</label>Female</li>
-                                            <li><label class="custom-label-2 mb-0">Marital Status :</label>Unmarried</li>
-                                            <li><label class="custom-label-2 mb-0">Permanent Address :</label>USA</li>
-                                            <li><label class="custom-label-2 mb-0">Zip code :</label>12345</li>
-                                        </ul>
+                                    <div class="message-content mt-3">
+                                        <p class="mb-2"><strong>Subject:</strong> Web Development Resources</p>
+                                        <p>Hello, I would like to know more about the resources available for learning full-stack web development. I am particularly interested in mastering React.js and Django. Could you provide some guidance on where to start?</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer d-flex flex-wrap justify-content-between align-items-center">
-                                <div class="mb-md-2 mb-3 exp-del">
-                                    <span class="d-block mb-1"><i class="fas fa-circle me-2 op4"></i>Currently Working at  <strong>Abcd Pvt Ltd</strong></span>
-                                    <span><i class="fas fa-circle me-2 op4"></i>3 Yrs Of Working Experience in   <strong>Abcd Pvt Ltd</strong></span>
-                                </div>
-                                <div>
-                                    <a href="javascript:void(0);" class="btn btn-primary btn-sm me-2 mb-1"><i class="fas fa-download me-2"></i>Download Resume</a>
-                                    <a href="javascript:void(0);" class="btn btn-warning btn-sm me-2 mb-1"><i class="fas fa-share-alt me-2"></i>Share Profile</a>
-                                    <a href="javascript:void(0);" class="btn btn-info btn-sm me-2 mb-1"><i class="fas fa-phone-alt me-2"></i>Contact</a>
-                                </div>
+                            <div class="card-footer text-center">
+                                <button id="completeBtn" class="btn btn-success">Mark as Complete</button>
+                                <button id="completeBtn" class="btn btn-danger">On Hold</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12 col-xxl-12 col-lg-12">
+                    
+                    <!-- JavaScript -->
+                   
+                    
+                    <!-- CSS -->
+                   
+                    <div class="col-xl-4 col-xxl-6 col-lg-6">
                         <div class="card border-0 pb-0">
                             <div class="card-header border-0 pb-0">
-                                <h4 class="card-title">Jobs Posted</h4> <!-- Changed title -->
+                                <h4 class="card-title">Available</h4>
                             </div>
                             <div class="card-body px-0"> 
-                                <div id="DZ_W_Todo2" class="widget-media dlab-scroll height370 px-4">
+                                <div id="DZ_W_Todo3" class="widget-media dlab-scroll height370 px-4">
                                     <ul class="timeline">
                                         <li>
                                             <div class="timeline-panel">
-                                                <div class="media me-2 media-danger">
-                                                    D
+                                                <div class="media me-2">
+                                                    <img alt="image" width="50" src="./dashboard/images/avatar/1.jpg">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mb-1">Full Stack Developer</h5>
-                                                    <small class="d-block">Posted on 29 July 2023</small>
-                                                    <span class="d-block">Openings: 5</span>
+                                                    <h5 class="mb-1">Alfie Mason <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
                                                 </div>
                                                 <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Connect </button>
+                                                    <div class="dropdown-menu dropdown-menu-end" style="">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media me-2 media-info">
-                                                    R
+                                                    KG
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mb-1">React Developer</h5>
-                                                    <small class="d-block">Posted on 15 August 2023</small>
-                                                    <span class="d-block">Openings: 3</span>
+                                                    <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
                                                 </div>
                                                 <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                    <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media me-2 media-success">
-                                                    P
+                                                    <img alt="image" width="50" src="./dashboard/images/avatar/2.jpg">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mb-1">Python Developer</h5>
-                                                    <small class="d-block">Posted on 10 September 2023</small>
-                                                    <span class="d-block">Openings: 4</span>
+                                                    <h5 class="mb-1">Jack Ronan <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
                                                 </div>
                                                 <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                    <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
+                                                </div>
+                                            </div>
+                                        </li>
+                                            <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2">
+                                                    <img alt="image" width="50" src="./dashboard/images/avatar/1.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5 class="mb-1">Noah Baldon <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media me-2 media-danger">
-                                                    AI
+                                                    PU
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mb-1">AI/ML Engineer</h5>
-                                                    <small class="d-block">Posted on 29 May 2023</small>
-                                                    <span class="d-block">Openings: 2</span>
+                                                    <h5 class="mb-1">Thomas Grady  <small class="text-muted">02:26 PM</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
                                                 </div>
                                                 <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-warning">
-                                                    AR
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="mb-1">Augmented Reality Developer</h5>
-                                                    <small class="d-block">Posted on 29 May 2023</small>
-                                                    <span class="d-block">Openings: 3</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                    <button type="button" class="btn btn-danger light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media me-2 media-primary">
-                                                    D
+                                                    <img alt="image" width="50" src="./dashboard/images/avatar/3.jpg">
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mb-1">Data Analyst</h5>
-                                                    <small class="d-block">Posted on 10 September 2023</small>
-                                                    <span class="d-block">Openings: 4</span>
+                                                    <h5 class="mb-1">Oscar Weston  <small class="text-muted">29 July 2020</small></h5>
+                                                    <p class="mb-1">I shared this on my fb wall a few months back..</p>
+                                                    
                                                 </div>
                                                 <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-info">
-                                                    S
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="mb-1">Software Tester</h5>
-                                                    <small class="d-block">Posted on 12 July 2023</small>
-                                                    <span class="d-block">Openings: 5</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                                            <g data-name="Layer 21">
-                                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
+                                                    <button type="button" class="btn btn-primary light sharp" data-bs-toggle="dropdown">
+                                                        Connect </button>
+                                                   
                                                 </div>
                                             </div>
                                         </li>
@@ -1411,24 +1378,16 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
-                  
-                    
-                    
 
-                </div>
-            </div>
+                   
         </div>
-
-
 
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/" target="_blank">Infoziant It
+                <p>Copyright © Designed &amp; Developed by <a href="https://Infoziant.com/" target="_blank">Infoziant It
                         Solutions</a> 2024</p>
             </div>
         </div>
