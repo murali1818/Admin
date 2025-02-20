@@ -98,7 +98,7 @@
             font-size: 16px;
         }
     </style>
-  
+
 
 </head>
 
@@ -1244,21 +1244,14 @@
                 <div class="page-titles d-flex justify-content-between align-items-center">
                     <!-- Title at the start -->
                     <h2 class="page-title">Courses</h2>
-
                     <!-- Right Section (Add Course Button moved to the end) -->
                     <div class="right-section">
                         <button class="add-course-btn btn btn-success">Add Course</button>
                     </div>
                 </div>
-
-                <!-- Course List -->
-
                 <div class="row" id="courseList">
                     <!-- Courses will be injected here dynamically using the Bootstrap card layout -->
                 </div>
-
-                <!-- Right Section (Add Button) -->
-
             </div>
 
             <!-- Add/Edit Course Modal -->
@@ -1269,6 +1262,7 @@
                     <form id="editForm">
                         <!-- Course Title -->
                         <label for="editTitle">Course Title:</label>
+
                         <input type="text" id="editTitle" class="input" name="editTitle" placeholder="AI Explorer: Discover the Future of Technology">
             
                         <!-- Course Name -->
@@ -1311,8 +1305,9 @@
                         <label for="editOutline">Course Outline:</label>
                         <textarea id="editOutline" name="editOutline" class="input" placeholder='Example: [{"title": "Intro", "content": "Intro to AI"}]'></textarea>
             
+
                         <!-- Save Changes Button -->
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
+                        <button type="button" id="saveChangesBtn" class="btn btn-primary mt-3">Save Changes</button>
                     </form>
                 </div>
             </div>
